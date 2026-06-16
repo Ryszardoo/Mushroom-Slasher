@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://j3i8egf4jmkx"]
+
+[ext_resource type="Script" uid="uid://38fo8ab25yml" path="res://Scenes/Entities/Player/player.gd" id="1_4ffj5"]
+[ext_resource type="Texture2D" uid="uid://c0dl6kv55xb6t" path="res://Assets/Cute_Fantasy_Free/Cute_Fantasy_Free/Player/Player.png" id="1_kkvp2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ffj5"]
+radius = 8.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1595388786]
+script = ExtResource("1_4ffj5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472852131]
+position = Vector2(0, -7)
+texture = ExtResource("1_kkvp2")
+hframes = 6
+vframes = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=92872315]
+shape = SubResource("CircleShape2D_4ffj5")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2108564793]
