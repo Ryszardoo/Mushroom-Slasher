@@ -8,18 +8,21 @@ enum State{
 }
 
 @export_category("Stats")
-@export var speed: int = 100
-@export var attack_speed: float = 0.6
+@export var speed: int = 400
+@export var attack_damage: int = 60
+@export var hitpoints: int = 150
+
 
 var state: State = State.IDLE
 var move_direction: Vector2 = Vector2.ZERO
+var attack_speed: float
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_playback: AnimationNodeStateMachinePlayback = $AnimationTree["parameters/playback"]
 
 func _ready() -> void:
 	animation_tree.set_active(true)
-
+	calculate_stats()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -27,8 +30,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 
 func _physics_process(_delta: float) -> void:
-	movement_loop()
+	if not state == State.ATTACK:
+		movement_loop()
 	
+
+func calculate_stats() -> void:
+	attack_speed = Equations.calculate_attack_speed()
+	var time_factor: float = Equations.BASE_ATTACK_SPEED / attack_speed
+	animation_tree.set("parameters/attack/TimeScale/scale", time_factor)
+	print("my new attack speed: ", attack_speed)
 	
 func movement_loop() -> void:
 	move_direction.x = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
@@ -74,3 +84,15 @@ func attack() -> void:
 	
 	await get_tree().create_timer(attack_speed).timeout
 	state = State.IDLE
+
+
+func take_damage(damage_taken: int) -> void:
+	hitpoints -= damage_taken
+	if hitpoints <= 0:
+		death()
+
+func death() -> void:
+	print("IM DEAD")
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	area.owner.take_damage(attack_damage)
