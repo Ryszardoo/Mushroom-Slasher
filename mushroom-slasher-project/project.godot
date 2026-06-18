@@ -13,14 +13,15 @@ config_version=5
 config/name="MushroomSlasherProject"
 run/main_scene="uid://75ymsv06nlcj"
 config/features=PackedStringArray("4.6", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=320
 window/size/viewport_height=180
-window/size/window_width_override=1920
-window/size/window_height_override=1080
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
