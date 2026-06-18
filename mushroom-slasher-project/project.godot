@@ -11,13 +11,19 @@ config_version=5
 [application]
 
 config/name="MushroomSlasherProject"
-run/main_scene="uid://j3i8egf4jmkx"
+run/main_scene="uid://ll1wyfglx177"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+PlayerData="*uid://cpgmxaga4ikhg"
+LevelData="*uid://efahew3bgyji"
 
 [global_group]
 
 player=""
+enemies=""
 
 [input]
 
