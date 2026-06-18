@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dart1u48fjyah" path="res://Assets/Cute_Fantasy/Cute_Fantasy/Buildings/House_Decor/Anvil_Anim.png" id="10_0etae"]
 [ext_resource type="Texture2D" uid="uid://8ewqvr4iqjqa" path="res://Assets/Cute_Fantasy/Cute_Fantasy/Buildings/House_Decor/Tables.png" id="11_mfrpl"]
 [ext_resource type="Texture2D" uid="uid://dwp47q4nsq2xm" path="res://Assets/Cute_Fantasy/Cute_Fantasy/Outdoor decoration/Big_Torch_Anim.png" id="12_dvrrp"]
+[ext_resource type="Texture2D" uid="uid://bx3e8nl6mbwe5" path="res://Assets/Cute_Fantasy/Cute_Fantasy/Outdoor decoration/Outdoor_Decor_Animations/Other_Animations/Campfire_Anim.png" id="12_u5b4k"]
 [ext_resource type="Texture2D" uid="uid://b0lbjanondiui" path="res://Assets/Cute_Fantasy/Cute_Fantasy/Outdoor decoration/Outdoor_Decor.png" id="13_ey5l2"]
 [ext_resource type="Texture2D" uid="uid://badh8tmsyrxng" path="res://Assets/Cute_Fantasy_MilitaryCamp/Cute_Fantasy_MilitaryCamp/Archery_Target.png" id="14_w1qbb"]
 [ext_resource type="Texture2D" uid="uid://cijrhunxi7a6k" path="res://Assets/Cute_Fantasy_MilitaryCamp/Cute_Fantasy_MilitaryCamp/Flags_Anim.png" id="15_j27qr"]
@@ -404,6 +405,20 @@ texture = ExtResource("10_0etae")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kivk1"]
 texture = ExtResource("11_mfrpl")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f1cta"]
+texture = ExtResource("12_u5b4k")
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/animation_speed = 8.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ofubd"]
 texture = ExtResource("12_dvrrp")
 
@@ -498,6 +513,7 @@ sources/8 = SubResource("TileSetAtlasSource_464c5")
 sources/9 = SubResource("TileSetAtlasSource_trhl2")
 sources/10 = SubResource("TileSetAtlasSource_mo2uk")
 sources/11 = SubResource("TileSetAtlasSource_kivk1")
+sources/13 = SubResource("TileSetAtlasSource_f1cta")
 
 [node name="BaseCamp" type="Node2D" unique_id=1803454437]
 
@@ -526,7 +542,7 @@ tile_set = SubResource("TileSet_11ukn")
 
 [node name="Props" type="TileMapLayer" parent="YSort" unique_id=2111815203]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAALAAgACAACAAAAAAAMAAgACAACAAAAAAANAAgACAADAAAAAAAKAAgACAABAAAAAAALAAkABwAAAAAAAAAOAAgAAQADAAAAAAAMAAkAAQADAAAAAAAJAAgAAQADAAAAAAAIAAsACQAAAAAAAAAIAAwACQAAAAEAAAAJAAwACgAAAAAAAAAjAAcABgAAAAAAAAAUAAYABAAAAAAAAAAYAAYABAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAALAAgACAACAAAAAAAMAAgACAACAAAAAAANAAgACAADAAAAAAAKAAgACAABAAAAAAALAAkABwAAAAAAAAAOAAgAAQADAAAAAAAMAAkAAQADAAAAAAAJAAgAAQADAAAAAAAIAAsACQAAAAAAAAAIAAwACQAAAAEAAAAJAAwACgAAAAAAAAAjAAcABgAAAAAAAAAUAAYABAAAAAAAAAAYAAYABAAAAAAAAAAWAAwADQAAAAAAAAA=")
 tile_set = SubResource("TileSet_3aqtt")
 
 [node name="Player" parent="YSort" unique_id=1595388786 instance=ExtResource("20_wb1a6")]
