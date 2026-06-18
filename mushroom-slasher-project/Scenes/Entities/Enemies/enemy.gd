@@ -82,7 +82,7 @@ func update_animation() -> void:
 		State.CHASE:
 			animation_playback.travel("run")
 		State.RETURN:
-			animation_playback.trabel("run")
+			animation_playback.travel("run")
 		State.ATTACK:
 			animation_playback.travel("attack")
 	
