@@ -11,10 +11,16 @@ config_version=5
 [application]
 
 config/name="MushroomSlasherProject"
-run/main_scene="uid://bldiosmlwwv4e"
+run/main_scene="uid://df8cowv1sof54"
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=60
 config/icon="res://icon.svg"
+
+[autoload]
+
+PlayerData="*uid://cpgmxaga4ikhg"
+LevelData="*uid://efahew3bgyji"
+ProgressionData="*uid://bwk33138pcmne"
 
 [display]
 
@@ -24,10 +30,6 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
-[autoload]
-
-PlayerData="*uid://cpgmxaga4ikhg"
-LevelData="*uid://efahew3bgyji"
 
 [global_group]
 

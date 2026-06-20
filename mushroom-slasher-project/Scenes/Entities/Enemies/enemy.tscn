@@ -344,7 +344,7 @@ states/idle/position = Vector2(304.52484, 99)
 states/run/node = SubResource("AnimationNodeAnimation_y6hyn")
 states/run/position = Vector2(479.98892, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_75l7y"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_5o8lj"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_i4twt"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_0yfgq"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_0fwr3"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_pc8mt")]
-graph_offset = Vector2(167.15714, 0)
+graph_offset = Vector2(40.157135, 64)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n8464"]
 radius = 7.0
@@ -382,6 +382,7 @@ parameters/attack/TimeScale/scale = 1.0
 path_postprocessing = 1
 avoidance_enabled = true
 radius = 48.0
+neighbor_distance = 128.0
 max_neighbors = 128
 max_speed = 128.0
 debug_enabled = true

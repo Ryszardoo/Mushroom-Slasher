@@ -1,19 +1,20 @@
 [gd_scene format=3 uid="uid://cgpp1amh0f1t7"]
 
+[ext_resource type="Script" uid="uid://dm4ipqi348p0j" path="res://Scenes/UI/main_menu.gd" id="1_72sra"]
 [ext_resource type="Texture2D" uid="uid://cue1k8np8t5rk" path="res://Assets/Cute_Fantasy_UI/Cute_Fantasy_UI/UI/UI_Buttons.png" id="1_v3fht"]
 [ext_resource type="FontFile" uid="uid://djvfykrdcmine" path="res://Assets/Cute_Fantasy_UI/Cute_Fantasy_UI/Fonts/CuteFantasy-5x9.ttf" id="2_b42ut"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b42ut"]
 atlas = ExtResource("1_v3fht")
-region = Rect2(0, 96, 32.075592, 16.141037)
+region = Rect2(1, 97, 30, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tfrft"]
 atlas = ExtResource("1_v3fht")
-region = Rect2(64, 98, 32, 14)
+region = Rect2(65, 99, 30, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqtmt"]
 atlas = ExtResource("1_v3fht")
-region = Rect2(32, 97, 32, 15)
+region = Rect2(33, 98, 30, 13)
 
 [node name="MainMenu" type="Control" unique_id=658099767]
 layout_mode = 3
@@ -22,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_72sra")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=544363453]
 layout_mode = 0
@@ -30,7 +32,7 @@ offset_bottom = 180.0
 alignment = 1
 
 [node name="PlayButton" type="TextureButton" parent="VBoxContainer" unique_id=1149122256]
-custom_minimum_size = Vector2(80, 48)
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = SubResource("AtlasTexture_b42ut")
@@ -44,14 +46,16 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -11.0
-offset_bottom = 5.0
+offset_left = -1.0
+offset_top = -10.0
+offset_right = -1.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
 theme_override_fonts/font = ExtResource("2_b42ut")
 theme_override_font_sizes/font_size = 16
 text = "Play"
@@ -59,7 +63,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SettingsButton" type="TextureButton" parent="VBoxContainer" unique_id=1552780517]
-custom_minimum_size = Vector2(80, 48)
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = SubResource("AtlasTexture_b42ut")
@@ -73,22 +77,56 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -11.0
-offset_bottom = 5.0
+offset_top = -9.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
 theme_override_fonts/font = ExtResource("2_b42ut")
 theme_override_font_sizes/font_size = 16
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AboutButton" type="TextureButton" parent="VBoxContainer" unique_id=942755504]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_b42ut")
+texture_pressed = SubResource("AtlasTexture_tfrft")
+texture_hover = SubResource("AtlasTexture_hqtmt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/AboutButton" unique_id=1778956917]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("2_b42ut")
+theme_override_font_sizes/font_size = 16
+text = "About"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=879791403]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
 [node name="ExitButton" type="TextureButton" parent="VBoxContainer" unique_id=1682385260]
-custom_minimum_size = Vector2(80, 48)
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = SubResource("AtlasTexture_b42ut")
@@ -102,16 +140,21 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -11.0
-offset_bottom = 5.0
+offset_top = -8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
 theme_override_fonts/font = ExtResource("2_b42ut")
 theme_override_font_sizes/font_size = 16
 text = "Exit"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/AboutButton" to="." method="_on_about_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

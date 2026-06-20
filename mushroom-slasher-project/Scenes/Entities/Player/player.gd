@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal game_over(victorious: bool)
 enum State{
 	IDLE,
 	RUN,
@@ -8,7 +9,7 @@ enum State{
 }
 
 @export_category("Stats")
-@export var speed: int = 400
+@export var speed: int = 100
 @export var attack_damage: int = 60
 @export var hitpoints: int = 150
 
@@ -30,7 +31,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 
 func _physics_process(_delta: float) -> void:
-	if not state == State.ATTACK:
+	if state == State.DEAD:
+		return
+
+	if state != State.ATTACK:
 		movement_loop()
 	
 
@@ -72,7 +76,7 @@ func update_animation() -> void:
 			animation_playback.travel("attack")
 	
 func attack() -> void:
-	if state == State.ATTACK:
+	if state == State.ATTACK or state == State.DEAD:
 		return
 	state = State.ATTACK
 	
@@ -92,7 +96,17 @@ func take_damage(damage_taken: int) -> void:
 		death()
 
 func death() -> void:
+	if state == State.DEAD:
+		return
+
+	state = State.DEAD
+	velocity = Vector2.ZERO
+	set_physics_process(false)
+	set_process_unhandled_input(false)
+
 	print("IM DEAD")
+	game_over.emit(false)
+	
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	area.owner.take_damage(attack_damage)
