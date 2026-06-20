@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal game_over(victorious: bool)
 enum State{
 	IDLE,
 	RUN,
@@ -93,6 +94,8 @@ func take_damage(damage_taken: int) -> void:
 
 func death() -> void:
 	print("IM DEAD")
+	game_over.emit(false)
+	
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	area.owner.take_damage(attack_damage)

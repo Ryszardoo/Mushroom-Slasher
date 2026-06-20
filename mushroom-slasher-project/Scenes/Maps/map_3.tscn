@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://kunpq60wiqss" path="res://Assets/Cute_Fantasy_ShroomLands/Cute_Fantasy_ShroomLands/Houses/Shroomlinng_House_3.5.png" id="12_o4gtm"]
 [ext_resource type="Texture2D" uid="uid://dyan80ft8p7ms" path="res://Assets/Cute_Fantasy_ShroomLands/Cute_Fantasy_ShroomLands/Houses/Shroomlinng_House_3.png" id="13_anjoh"]
 [ext_resource type="PackedScene" uid="uid://j3i8egf4jmkx" path="res://Scenes/Entities/Player/player.tscn" id="14_bsddj"]
+[ext_resource type="PackedScene" uid="uid://h37u34r81vvk" path="res://Scenes/Entities/Enemies/enemy.tscn" id="15_t8m88"]
+[ext_resource type="PackedScene" uid="uid://dt5i2w6b6i8oo" path="res://Scenes/Main/LevelExperienceController.tscn" id="16_68q0e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3k4nc"]
 texture = ExtResource("1_aeikj")
@@ -2046,7 +2048,30 @@ tile_set = SubResource("TileSet_1dme7")
 [node name="Player" parent="YSort" unique_id=1595388786 instance=ExtResource("14_bsddj")]
 position = Vector2(314, 408)
 
+[node name="Enemies" type="Node2D" parent="YSort" unique_id=1707035777]
+
+[node name="Enemy" parent="YSort/Enemies" unique_id=1636967107 instance=ExtResource("15_t8m88")]
+position = Vector2(109, 112)
+
+[node name="Effects" type="Node2D" parent="YSort/Enemies/Enemy" unique_id=1213224274]
+unique_name_in_owner = true
+position = Vector2(-133, -86)
+
+[node name="Enemy2" parent="YSort/Enemies" unique_id=244104415 instance=ExtResource("15_t8m88")]
+position = Vector2(258, -133)
+
+[node name="Effects" type="Node2D" parent="YSort/Enemies/Enemy2" unique_id=1237483456]
+position = Vector2(-133, -86)
+
+[node name="Enemy3" parent="YSort/Enemies" unique_id=624722028 instance=ExtResource("15_t8m88")]
+position = Vector2(598, -60)
+
+[node name="Effects" type="Node2D" parent="YSort/Enemies/Enemy3" unique_id=1693199297]
+position = Vector2(-133, -86)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=500122359]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1295856944]
 polygon = PackedVector2Array(356, 461, -177, 459, -177, 29, 274, 25, 274, -21, 358, -22, 358, 22, 802, 22, 800, 473, 367, 462, 621, 552, 815, 527, 858, 405, 847, 74, 808, -44, 293, -78, -128, -50, -266, 32, -266, 407, -248, 590, 115, 580, 324, 513, 362, 465)
+
+[node name="LevelExperienceController" parent="." unique_id=2126183562 instance=ExtResource("16_68q0e")]

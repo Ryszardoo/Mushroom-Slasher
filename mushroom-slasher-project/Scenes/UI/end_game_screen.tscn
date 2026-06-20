@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b2ieyklv81j54"]
 
 [ext_resource type="FontFile" uid="uid://djvfykrdcmine" path="res://Assets/Cute_Fantasy_UI/Cute_Fantasy_UI/Fonts/CuteFantasy-5x9.ttf" id="1_8hvtf"]
+[ext_resource type="Script" uid="uid://nead6rh7y2aw" path="res://Scenes/UI/end_game_screen.gd" id="1_sgwun"]
 [ext_resource type="Texture2D" uid="uid://cue1k8np8t5rk" path="res://Assets/Cute_Fantasy_UI/Cute_Fantasy_UI/UI/UI_Buttons.png" id="2_sgwun"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhc5w"]
@@ -22,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sgwun")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=255447526]
 layout_mode = 1
@@ -120,3 +122,6 @@ theme_override_font_sizes/font_size = 13
 text = "Basecamp"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Respawn" to="." method="_on_respawn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/BaseCamp" to="." method="_on_base_camp_pressed"]
