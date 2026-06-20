@@ -380,12 +380,12 @@ states/run/position = Vector2(479.98892, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_75l7y"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_5o8lj"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_i4twt"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_0yfgq"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_0fwr3"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_pc8mt")]
 graph_offset = Vector2(167.15714, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ffj5"]
-size = Vector2(4, 14.5)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ffj5"]
 radius = 7.0
 height = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ffj5"]
+size = Vector2(4, 14.5)
 
 [node name="Player" type="CharacterBody2D" unique_id=1595388786 groups=["player"]]
 script = ExtResource("1_4ffj5")
@@ -411,16 +411,6 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/attack/BlendSpace2D/blend_position = Vector2(0, 0)
 parameters/attack/TimeScale/scale = 1.0
 
-[node name="HitBox" type="Area2D" parent="." unique_id=1297350634]
-position = Vector2(10, -5)
-collision_layer = 0
-collision_mask = 16
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=464944149]
-position = Vector2(0, -6.75)
-shape = SubResource("RectangleShape2D_4ffj5")
-
 [node name="HurtBox" type="Area2D" parent="." unique_id=261799432]
 collision_layer = 32
 collision_mask = 0
@@ -430,5 +420,15 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1694218712]
 position = Vector2(0, -9)
 shape = SubResource("CapsuleShape2D_4ffj5")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1297350634]
+position = Vector2(10, -5)
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=464944149]
+position = Vector2(0, -6.75)
+shape = SubResource("RectangleShape2D_4ffj5")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

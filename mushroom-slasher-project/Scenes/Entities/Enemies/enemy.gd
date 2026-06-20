@@ -15,8 +15,8 @@ enum State{
 @export var attack_damage: int = 10
 @export var attack_speed: float = 1.0
 @export var hitpoints: int = 100
-@export var aggro_range: float = 256.0
-@export var attack_range: float = 80.0
+@export var aggro_range: float = 96.0
+@export var attack_range: float = 24.0
 @export var exp_reward: int = 600
 @export_category("Related Scenes")
 @export var death_packed: PackedScene
@@ -40,7 +40,7 @@ func _physics_process(_delta: float) -> void:
 	if distance_to_player() <= attack_range:
 		state = State.ATTACK
 		attack()
-	if distance_to_player() <= aggro_range:
+	elif distance_to_player() <= aggro_range:
 		state = State.CHASE
 		move()
 	elif global_position.distance_to(spawn_point) > 32:
@@ -67,7 +67,7 @@ func move() -> void:
 		_on_navigation_agent_2d_velocity_computed(velocity)
 	move_and_slide()
 	
-	if state == State.IDLE or State.CHASE:
+	if state == State.IDLE or state == State.CHASE:
 		if velocity.x < -0.01:
 			$Sprite2D.flip_h = true
 		elif velocity.x > 0.01:
@@ -108,7 +108,7 @@ func death() -> void:
 	died.emit(exp_reward)
 	var death_scene: Node2D = death_packed.instantiate()
 	death_scene.position = global_position + Vector2(0.0,-32.0)
-	$Effect.add_child(death_scene)
+	$Effects.add_child(death_scene)
 	queue_free()
 
 
