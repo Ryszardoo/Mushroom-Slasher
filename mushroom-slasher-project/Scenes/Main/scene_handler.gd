@@ -171,7 +171,7 @@ func _show_end_game_screen(victorious: bool) -> void:
 		return
 
 	if end_game_screen_packed == null:
-		push_error("End-game screen scene has not been assigned.")
+		push_error("End-game screen scene is not assigned.")
 		return
 
 	end_game_screen = (
@@ -183,9 +183,11 @@ func _show_end_game_screen(victorious: bool) -> void:
 		return
 
 	end_game_screen.victorious = victorious
+
 	end_game_screen.respawn_requested.connect(
 		_on_respawn_requested
 	)
+
 	end_game_screen.base_camp_requested.connect(
 		_on_base_camp_requested
 	)

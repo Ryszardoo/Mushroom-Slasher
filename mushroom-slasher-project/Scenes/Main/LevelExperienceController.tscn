@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://dt5i2w6b6i8oo"]
 
 [ext_resource type="Script" uid="uid://bru6yfvy72wn2" path="res://Scenes/Main/level_experience_controller.gd" id="1_aebrw"]
-[ext_resource type="PackedScene" uid="uid://b2ieyklv81j54" path="res://Scenes/UI/end_game_screen.tscn" id="2_3rs27"]
 
 [node name="LevelExperienceController" type="Node" unique_id=2126183562]
 script = ExtResource("1_aebrw")
-end_game_screen_packed = ExtResource("2_3rs27")

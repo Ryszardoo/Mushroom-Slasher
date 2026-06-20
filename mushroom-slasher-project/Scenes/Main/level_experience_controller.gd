@@ -3,6 +3,7 @@ extends Node
 
 signal levelup
 signal level_finished(victorious: bool)
+signal game_over(victorious: bool)
 
 var total_enemies: int = 0
 var killed_enemies: int = 0
@@ -20,6 +21,12 @@ func _ready() -> void:
 		push_error("LevelExperienceController did not find the player.")
 		return
 
+	if player.has_signal("game_over"):
+		player.game_over.connect(_on_player_game_over)
+	else:
+		push_warning("Player has no game_over signal.")
+	
+	
 	_connect_existing_enemies()
 	get_tree().node_added.connect(_on_node_added)
 
@@ -79,7 +86,7 @@ func _on_enemy_died(exp_reward: int) -> void:
 		_finish_level(true)
 
 
-func _on_player_game_over() -> void:
+func _on_player_game_over(_victorious: bool) -> void:
 	_finish_level(false)
 
 
