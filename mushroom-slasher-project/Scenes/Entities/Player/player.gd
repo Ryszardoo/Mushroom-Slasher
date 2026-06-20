@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 signal game_over(victorious: bool)
+signal health_changed(current_health: int, maximum_health: int)
+
 enum State{
 	IDLE,
 	RUN,
@@ -11,6 +13,7 @@ enum State{
 @export_category("Stats")
 @export var speed: int = 100
 @export var attack_damage: int = 60
+@export var maximum_hitpoints: int = 150
 @export var hitpoints: int = 150
 
 
@@ -24,6 +27,7 @@ var attack_speed: float
 func _ready() -> void:
 	animation_tree.set_active(true)
 	calculate_stats()
+	health_changed.emit(hitpoints, maximum_hitpoints)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -91,7 +95,16 @@ func attack() -> void:
 
 
 func take_damage(damage_taken: int) -> void:
-	hitpoints -= damage_taken
+	if state == State.DEAD:
+		return
+
+	hitpoints = maxi(hitpoints - damage_taken, 0)
+
+	health_changed.emit(
+		hitpoints,
+		maximum_hitpoints
+	)
+
 	if hitpoints <= 0:
 		death()
 

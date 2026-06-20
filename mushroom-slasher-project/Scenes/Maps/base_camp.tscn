@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://ba16fv23j0ah2" path="res://Assets/Cute_Fantasy/Cute_Fantasy/Outdoor decoration/Fence_Big.png" id="18_d84e5"]
 [ext_resource type="Texture2D" uid="uid://w6y3p22m73w" path="res://Assets/Cute_Fantasy/Cute_Fantasy/Buildings/House_Decor/Furnaces.png" id="19_vo81l"]
 [ext_resource type="PackedScene" uid="uid://j3i8egf4jmkx" path="res://Scenes/Entities/Player/player.tscn" id="20_wb1a6"]
-[ext_resource type="Script" uid="uid://b0dvfw0hqk2w3" path="res://Scenes/Maps/campfire.gd" id="22_vu60y"]
+[ext_resource type="Script" uid="uid://b0dvfw0hqk2w3" path="res://Scenes/Entities/campfire.gd" id="22_vu60y"]
 [ext_resource type="PackedScene" uid="uid://b4md2bi3lk7wg" path="res://Scenes/UI/level_select_panel.tscn" id="24_l6s1q"]
 [ext_resource type="Script" uid="uid://djckscjdppkay" path="res://Scenes/UI/level_select_panel.gd" id="25_pxcgn"]
 

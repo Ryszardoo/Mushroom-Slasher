@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bhe25hi0p4xe7"]
 
 [ext_resource type="Script" uid="uid://57oco04kx67e" path="res://Scenes/Entities/Enemies/boss3.gd" id="1_56wfi"]
+[ext_resource type="PackedScene" uid="uid://b5w7xhb6dlr5r" path="res://Scenes/Effect/death.tscn" id="2_wrcie"]
 [ext_resource type="Texture2D" uid="uid://6y7thipat4nh" path="res://Assets/Cute_Fantasy/Cute_Fantasy/Enemies/Bombschroom/Bombschroom.png" id="3_wrcie"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ffj5"]
@@ -354,6 +355,7 @@ size = Vector2(4, 14.5)
 
 [node name="Boss3" type="CharacterBody2D" unique_id=1595388786 groups=["enemies"]]
 script = ExtResource("1_56wfi")
+death_packed = ExtResource("2_wrcie")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472852131]
 position = Vector2(0, -8)
@@ -400,8 +402,7 @@ position = Vector2(0, -11)
 shape = SubResource("CapsuleShape2D_n8464")
 
 [node name="HitBox" type="Area2D" parent="." unique_id=2098446586]
-position = Vector2(-5, -4)
-rotation = -1.6109389
+position = Vector2(10, -5)
 collision_layer = 0
 collision_mask = 32
 monitorable = false

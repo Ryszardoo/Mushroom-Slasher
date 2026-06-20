@@ -13,6 +13,8 @@ extends Node
 
 @onready var map_container: Node2D = $MapContainer
 @onready var ui: CanvasLayer = $UI
+@onready var level_hud: LevelHUD = $UI/LevelHUD
+@onready var level_up_announcement: LevelUpAnnouncement = ($UI/LevelUpAnnouncement)
 
 var current_scene: Node
 var main_menu: Control
@@ -21,6 +23,7 @@ var end_game_screen: Control
 
 
 func _ready() -> void:
+	level_hud.hide_for_non_level()
 	show_main_menu()
 	
 
@@ -59,6 +62,8 @@ func show_main_menu() -> void:
 
 
 func load_base_camp() -> void:
+	level_hud.hide_for_non_level()
+	
 	current_level_id = 0
 	await _replace_current_scene(base_camp_packed)
 	_connect_base_camp()
@@ -121,7 +126,7 @@ func _connect_level_controller() -> void:
 		"LevelExperienceController",
 		true,
 		false
-	)
+	) as LevelExperienceController
 
 	if controller == null:
 		push_error(
@@ -129,11 +134,79 @@ func _connect_level_controller() -> void:
 		)
 		return
 
+	# Enemy clearance counter.
+	if not controller.enemy_progress_changed.is_connected(
+		level_hud.update_enemy_progress
+	):
+		controller.enemy_progress_changed.connect(
+			level_hud.update_enemy_progress
+		)
+
+	level_hud.show_for_level(
+		controller.killed_enemies,
+		controller.total_enemies
+	)
+
+	# Player defeat.
 	if not controller.level_finished.is_connected(
 		_on_level_finished
 	):
-		controller.level_finished.connect(_on_level_finished)
+		controller.level_finished.connect(
+			_on_level_finished
+		)
 
+	# XP bar.
+	if not controller.experience_changed.is_connected(
+		level_hud.update_experience
+	):
+		controller.experience_changed.connect(
+			level_hud.update_experience
+		)
+
+	controller.emit_experience_changed()
+
+	# Level-up announcement.
+	if not controller.levelup.is_connected(
+		level_up_announcement.show_level_up
+	):
+		controller.levelup.connect(
+			level_up_announcement.show_level_up
+		)
+
+	# HP bar.
+	var player := get_tree().get_first_node_in_group("player")
+
+	if player == null:
+		push_error("SceneHandler could not find the player.")
+	else:
+		if not player.health_changed.is_connected(
+			level_hud.update_health
+		):
+			player.health_changed.connect(
+				level_hud.update_health
+			)
+
+		level_hud.update_health(
+			player.hitpoints,
+			player.maximum_hitpoints
+		)
+
+	# Level progression.
+	if current_scene.has_signal("next_level_requested"):
+		if not current_scene.next_level_requested.is_connected(
+			start_level
+		):
+			current_scene.next_level_requested.connect(
+				start_level
+			)
+
+	if current_scene.has_signal("base_camp_requested"):
+		if not current_scene.base_camp_requested.is_connected(
+			load_base_camp
+		):
+			current_scene.base_camp_requested.connect(
+				load_base_camp
+			)
 
 func _connect_base_camp() -> void:
 	if not current_scene.has_signal("level_selected"):
