@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cig76g43tb1e5"]
+
+[ext_resource type="Texture2D" uid="uid://dgj4nygkd8tkg" path="res://Assets/Cute_Fantasy_Volcano/Cute_Fantasy_Volcano/Volcano_Props/Volcano_Fence.png" id="1_3mwgy"]
+[ext_resource type="Script" uid="uid://duswuupi4uwjt" path="res://Scenes/Entities/level_exit_door.gd" id="1_o87vt"]
+[ext_resource type="FontFile" uid="uid://djvfykrdcmine" path="res://Assets/Cute_Fantasy_UI/Cute_Fantasy_UI/Fonts/CuteFantasy-5x9.ttf" id="3_ptcua"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y346v"]
+size = Vector2(39, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o87vt"]
+atlas = ExtResource("1_3mwgy")
+region = Rect2(22, 1, 37, 15)
+
+[node name="LevelExitDoor" type="Area2D" unique_id=1738039103]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_o87vt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=789194319]
+position = Vector2(20, 9)
+shape = SubResource("RectangleShape2D_y346v")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1966612613]
+position = Vector2(20.5, 9.5)
+texture = SubResource("AtlasTexture_o87vt")
+
+[node name="LockedMessage" type="Label" parent="." unique_id=1805136742]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = 21.0
+offset_right = 99.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_ptcua")
+theme_override_font_sizes/font_size = 16
+text = "Defeat all enemies first!"
+horizontal_alignment = 1
+vertical_alignment = 1

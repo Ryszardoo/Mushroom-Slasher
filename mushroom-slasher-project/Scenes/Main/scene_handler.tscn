@@ -7,6 +7,31 @@
 [ext_resource type="PackedScene" uid="uid://75ymsv06nlcj" path="res://Scenes/Maps/map_2.tscn" id="5_shb8u"]
 [ext_resource type="PackedScene" uid="uid://dmcw22c6okqvx" path="res://Scenes/Maps/map_3.tscn" id="6_8xlt5"]
 [ext_resource type="PackedScene" uid="uid://b2ieyklv81j54" path="res://Scenes/UI/end_game_screen.tscn" id="6_shb8u"]
+[ext_resource type="Script" uid="uid://ce25ydlpwihgb" path="res://Scenes/Main/level_hud.gd" id="8_6ys2v"]
+[ext_resource type="FontFile" uid="uid://djvfykrdcmine" path="res://Assets/Cute_Fantasy_UI/Cute_Fantasy_UI/Fonts/CuteFantasy-5x9.ttf" id="8_8xlt5"]
+[ext_resource type="Texture2D" uid="uid://culghul1ryi1m" path="res://Assets/Cute_Fantasy_UI/Cute_Fantasy_UI/UI/UI_Bars.png" id="9_rjxp3"]
+[ext_resource type="Script" uid="uid://nebvcf7dy8y8" path="res://Scenes/Main/level_up_announcement.gd" id="11_6j2ev"]
+[ext_resource type="PackedScene" uid="uid://81rv4u8n0yam" path="res://Scenes/UI/SettingsMenu.tscn" id="12_7d62p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j2ev"]
+atlas = ExtResource("9_rjxp3")
+region = Rect2(192, 6, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d62p"]
+atlas = ExtResource("9_rjxp3")
+region = Rect2(147, 9, 29, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnmga"]
+atlas = ExtResource("9_rjxp3")
+region = Rect2(211, 9, 29, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjxp3"]
+atlas = ExtResource("9_rjxp3")
+region = Rect2(147, 13, 29, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_noeab"]
+atlas = ExtResource("9_rjxp3")
+region = Rect2(211, 17, 29, 5)
 
 [node name="SceneHandler" type="Node" unique_id=560664235]
 script = ExtResource("1_5nhwg")
@@ -18,5 +43,175 @@ end_game_screen_packed = ExtResource("6_shb8u")
 main_menu_packed = ExtResource("2_fte8d")
 
 [node name="MapContainer" type="Node2D" parent="." unique_id=1490099276]
+position = Vector2(0, 9)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=622459796]
+
+[node name="LevelHUD" type="Control" parent="UI" unique_id=1133738870]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_6ys2v")
+
+[node name="ResourcesAndClearence" type="VBoxContainer" parent="UI/LevelHUD" unique_id=1324541999]
+layout_mode = 1
+offset_right = 96.0
+offset_bottom = 40.0
+
+[node name="StatsBox" type="Control" parent="UI/LevelHUD/ResourcesAndClearence" unique_id=442800146]
+layout_mode = 2
+
+[node name="Frame" type="TextureRect" parent="UI/LevelHUD/ResourcesAndClearence/StatsBox" unique_id=854913160]
+layout_mode = 0
+offset_right = 38.0
+offset_bottom = 38.0
+texture = SubResource("AtlasTexture_6j2ev")
+expand_mode = 1
+
+[node name="HPBar" type="TextureProgressBar" parent="UI/LevelHUD/ResourcesAndClearence/StatsBox/Frame" unique_id=1980442863]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 38.0
+offset_top = 10.0
+offset_right = 67.0
+offset_bottom = 14.0
+scale = Vector2(2, 2)
+max_value = 150.0
+value = 150.0
+texture_under = SubResource("AtlasTexture_7d62p")
+texture_progress = SubResource("AtlasTexture_nnmga")
+
+[node name="HPLabel" type="Label" parent="UI/LevelHUD/ResourcesAndClearence/StatsBox/Frame/HPBar" unique_id=360507276]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = -47.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("8_8xlt5")
+theme_override_font_sizes/font_size = 16
+text = "150/150"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XPBar" type="TextureProgressBar" parent="UI/LevelHUD/ResourcesAndClearence/StatsBox/Frame" unique_id=697958379]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 38.0
+offset_top = 20.0
+offset_right = 67.0
+offset_bottom = 25.0
+scale = Vector2(2, 2)
+max_value = 500.0
+texture_under = SubResource("AtlasTexture_rjxp3")
+texture_progress = SubResource("AtlasTexture_noeab")
+
+[node name="XPLabel" type="Label" parent="UI/LevelHUD/ResourcesAndClearence/StatsBox/Frame/XPBar" unique_id=1555395246]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 55.0
+offset_right = 18.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("8_8xlt5")
+theme_override_font_sizes/font_size = 16
+text = "150/150"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="UI/LevelHUD/ResourcesAndClearence" unique_id=1370392517]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="EnemyCounter" type="Label" parent="UI/LevelHUD/ResourcesAndClearence" unique_id=339190106]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("8_8xlt5")
+theme_override_font_sizes/font_size = 16
+text = "Enemies: 0/0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelUpAnnouncement" type="Control" parent="UI" unique_id=905310423]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("11_6j2ev")
+
+[node name="AnnouncementContainer" type="PanelContainer" parent="UI/LevelUpAnnouncement" unique_id=1528525415]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -52.0
+offset_right = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnnouncementBox" type="VBoxContainer" parent="UI/LevelUpAnnouncement/AnnouncementContainer" unique_id=1735391775]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="UI/LevelUpAnnouncement/AnnouncementContainer/AnnouncementBox" unique_id=22972419]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("8_8xlt5")
+theme_override_font_sizes/font_size = 16
+text = "LEVEL UP !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="UI/LevelUpAnnouncement/AnnouncementContainer/AnnouncementBox" unique_id=1984083348]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("8_8xlt5")
+theme_override_font_sizes/font_size = 16
+text = "Level 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsMenu" parent="UI" unique_id=1137410435 instance=ExtResource("12_7d62p")]
+unique_name_in_owner = true

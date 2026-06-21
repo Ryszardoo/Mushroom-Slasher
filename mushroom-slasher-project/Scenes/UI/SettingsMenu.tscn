@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://81rv4u8n0yam"]
+
+[ext_resource type="FontFile" uid="uid://djvfykrdcmine" path="res://Assets/Cute_Fantasy_UI/Cute_Fantasy_UI/Fonts/CuteFantasy-5x9.ttf" id="1_gne0f"]
+[ext_resource type="Script" uid="uid://30no5kntyssn" path="res://Scenes/UI/settings_menu.gd" id="1_owj4x"]
+[ext_resource type="Texture2D" uid="uid://doeskyeoayeya" path="res://Assets/Cute_Fantasy_UI/Cute_Fantasy_UI/UI/Book_UI.png" id="1_q4b8a"]
+[ext_resource type="Texture2D" uid="uid://cue1k8np8t5rk" path="res://Assets/Cute_Fantasy_UI/Cute_Fantasy_UI/UI/UI_Buttons.png" id="4_3hh3s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw62m"]
+atlas = ExtResource("1_q4b8a")
+region = Rect2(7, 5, 225, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83xbh"]
+atlas = ExtResource("4_3hh3s")
+region = Rect2(1, 1, 30, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1gh5"]
+atlas = ExtResource("4_3hh3s")
+region = Rect2(65, 3, 30, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf63h"]
+atlas = ExtResource("4_3hh3s")
+region = Rect2(33, 2, 30, 13)
+
+[node name="SettingsMenu" type="Control" unique_id=1137410435]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_owj4x")
+
+[node name="DimBackground" type="ColorRect" parent="." unique_id=86181590]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.21568628)
+
+[node name="BookPanel" type="TextureRect" parent="." unique_id=403221416]
+custom_minimum_size = Vector2(224, 136)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = SubResource("AtlasTexture_mw62m")
+expand_mode = 1
+
+[node name="Content" type="VBoxContainer" parent="BookPanel" unique_id=1726123503]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = 154.0
+offset_bottom = 152.0
+theme_override_constants/separation = 25
+
+[node name="TitleLabel" type="Label" parent="BookPanel/Content" unique_id=790390661]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_gne0f")
+theme_override_font_sizes/font_size = 12
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolumeRow" type="HBoxContainer" parent="BookPanel/Content" unique_id=2071362039]
+layout_mode = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="BookPanel/Content/MasterVolumeRow" unique_id=429864869]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_gne0f")
+theme_override_font_sizes/font_size = 8
+text = "Master Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolumeSlider" type="HSlider" parent="BookPanel/Content/MasterVolumeRow" unique_id=464280547]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+value = 100.0
+
+[node name="FullscreenRow" type="HBoxContainer" parent="BookPanel/Content" unique_id=1937371000]
+layout_mode = 2
+
+[node name="FullscreenLabel" type="Label" parent="BookPanel/Content/FullscreenRow" unique_id=1161844339]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_gne0f")
+theme_override_font_sizes/font_size = 10
+text = "Fullscreen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="BookPanel/Content/FullscreenRow" unique_id=935264948]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BackButton" type="TextureButton" parent="BookPanel/Content" unique_id=1140155663]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_83xbh")
+texture_pressed = SubResource("AtlasTexture_v1gh5")
+texture_hover = SubResource("AtlasTexture_qf63h")
+
+[node name="FullscreenLabel" type="Label" parent="BookPanel/Content/BackButton" unique_id=1365711817]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_gne0f")
+theme_override_font_sizes/font_size = 9
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
