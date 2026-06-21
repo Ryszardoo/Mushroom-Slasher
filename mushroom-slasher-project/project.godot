@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 PlayerData="*uid://cpgmxaga4ikhg"
 LevelData="*uid://efahew3bgyji"
 ProgressionData="*uid://bwk33138pcmne"
+SettingsData="*uid://mclpdt1nj3ws"
 
 [display]
 

@@ -15,6 +15,7 @@ extends Node
 @onready var ui: CanvasLayer = $UI
 @onready var level_hud: LevelHUD = $UI/LevelHUD
 @onready var level_up_announcement: LevelUpAnnouncement = ($UI/LevelUpAnnouncement)
+@onready var settings_menu: SettingsMenu = %SettingsMenu
 
 var current_scene: Node
 var main_menu: Control
@@ -24,6 +25,14 @@ var end_game_screen: Control
 
 func _ready() -> void:
 	level_hud.hide_for_non_level()
+
+	if not settings_menu.closed.is_connected(
+		_on_settings_menu_closed
+	):
+		settings_menu.closed.connect(
+			_on_settings_menu_closed
+		)
+
 	show_main_menu()
 	
 
@@ -47,19 +56,15 @@ func show_main_menu() -> void:
 	main_menu.play_button_pressed.connect(
 		_on_main_menu_play_pressed
 	)
-
 	main_menu.settings_button_pressed.connect(
 		_on_main_menu_settings_pressed
 	)
-
 	main_menu.about_button_pressed.connect(
 		_on_main_menu_about_pressed
 	)
-
 	main_menu.exit_button_pressed.connect(
 		_on_main_menu_exit_pressed
 	)
-
 
 func load_base_camp() -> void:
 	level_hud.hide_for_non_level()
@@ -292,7 +297,14 @@ func _on_main_menu_play_pressed() -> void:
 
 
 func _on_main_menu_settings_pressed() -> void:
-	print("Open settings menu here.")
+	if is_instance_valid(main_menu):
+		main_menu.hide()
+
+	settings_menu.open()
+
+func _on_settings_menu_closed() -> void:
+	if is_instance_valid(main_menu):
+		main_menu.show()
 
 
 func _on_main_menu_about_pressed() -> void:
