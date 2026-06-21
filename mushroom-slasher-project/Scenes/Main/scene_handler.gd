@@ -16,6 +16,7 @@ extends Node
 @onready var level_hud: LevelHUD = $UI/LevelHUD
 @onready var level_up_announcement: LevelUpAnnouncement = ($UI/LevelUpAnnouncement)
 @onready var settings_menu: SettingsMenu = %SettingsMenu
+@onready var about_menu: AboutMenu = %AboutMenu
 
 var current_scene: Node
 var main_menu: Control
@@ -31,6 +32,12 @@ func _ready() -> void:
 	):
 		settings_menu.closed.connect(
 			_on_settings_menu_closed
+		)
+	if not about_menu.closed.is_connected(
+		_on_about_menu_closed
+	):
+		about_menu.closed.connect(
+			_on_about_menu_closed
 		)
 
 	show_main_menu()
@@ -308,8 +315,14 @@ func _on_settings_menu_closed() -> void:
 
 
 func _on_main_menu_about_pressed() -> void:
-	print("Open about menu here.")
+	if is_instance_valid(main_menu):
+		main_menu.hide()
+	
+	about_menu.open()
 
+func _on_about_menu_closed() -> void:
+	if is_instance_valid(main_menu):
+		main_menu.show()
 
 func _on_main_menu_exit_pressed() -> void:
 	get_tree().quit()

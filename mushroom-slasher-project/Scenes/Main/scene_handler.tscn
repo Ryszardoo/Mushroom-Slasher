@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://culghul1ryi1m" path="res://Assets/Cute_Fantasy_UI/Cute_Fantasy_UI/UI/UI_Bars.png" id="9_rjxp3"]
 [ext_resource type="Script" uid="uid://nebvcf7dy8y8" path="res://Scenes/Main/level_up_announcement.gd" id="11_6j2ev"]
 [ext_resource type="PackedScene" uid="uid://81rv4u8n0yam" path="res://Scenes/UI/SettingsMenu.tscn" id="12_7d62p"]
+[ext_resource type="PackedScene" uid="uid://cdi7gj3pxftn3" path="res://Scenes/UI/AboutMenu.tscn" id="13_nnmga"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6j2ev"]
 atlas = ExtResource("9_rjxp3")
@@ -214,4 +215,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SettingsMenu" parent="UI" unique_id=1137410435 instance=ExtResource("12_7d62p")]
+unique_name_in_owner = true
+
+[node name="AboutMenu" parent="UI" unique_id=1904614392 instance=ExtResource("13_nnmga")]
 unique_name_in_owner = true

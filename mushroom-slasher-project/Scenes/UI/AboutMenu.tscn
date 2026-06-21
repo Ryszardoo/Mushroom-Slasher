@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://cdi7gj3pxftn3"]
+
+[ext_resource type="Script" uid="uid://dkx606oyuls8j" path="res://Scenes/UI/about_menu.gd" id="1_3gc7p"]
+[ext_resource type="FontFile" uid="uid://djvfykrdcmine" path="res://Assets/Cute_Fantasy_UI/Cute_Fantasy_UI/Fonts/CuteFantasy-5x9.ttf" id="1_nn2ml"]
+[ext_resource type="Texture2D" uid="uid://cue1k8np8t5rk" path="res://Assets/Cute_Fantasy_UI/Cute_Fantasy_UI/UI/UI_Buttons.png" id="2_3gc7p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5us3"]
+atlas = ExtResource("2_3gc7p")
+region = Rect2(1, 1, 30, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sh4iy"]
+atlas = ExtResource("2_3gc7p")
+region = Rect2(65, 3, 30, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oix8"]
+atlas = ExtResource("2_3gc7p")
+region = Rect2(33, 2, 30, 13)
+
+[node name="AboutMenu" type="Control" unique_id=1904614392]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3gc7p")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=989157976]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.21568628)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=854897896]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=367578653]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=467016031]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1771336309]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_nn2ml")
+theme_override_font_sizes/font_size = 16
+text = "About"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameTiltleLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1407177134]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_nn2ml")
+theme_override_font_sizes/font_size = 16
+text = "Mushroom Slasher"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VersionLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1965902454]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_nn2ml")
+theme_override_font_sizes/font_size = 16
+text = "Version 0.1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1613253702]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_nn2ml")
+theme_override_font_sizes/font_size = 16
+text = "Created by: 
+Ryszard Rakowicz
+Olgierd Karpacz"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1173331302]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = SubResource("AtlasTexture_i5us3")
+texture_pressed = SubResource("AtlasTexture_sh4iy")
+texture_hover = SubResource("AtlasTexture_1oix8")
+
+[node name="FullscreenLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/BackButton" unique_id=602730541]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_nn2ml")
+theme_override_font_sizes/font_size = 9
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
